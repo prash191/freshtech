@@ -7,7 +7,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const crypto = require('crypto');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const productRouter = require('./routes/productRoute');
 const userRouter = require('./routes/userRoute');
@@ -22,6 +23,11 @@ const app = Express();
 app.set('view engine', 'pug');
 
 // Global middlewares
+app.use(cors({
+  origin: "http://localhost:5174", // Replace with your frontend URL
+  methods: "GET,POST,PUT,DELETE,PATCH",
+  credentials: true
+}));
 
 // Serving static files.
 app.use(Express.static(path.join(__dirname, 'public')));

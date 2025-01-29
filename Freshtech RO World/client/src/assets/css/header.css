@@ -1,0 +1,54 @@
+header {
+  background-color: #1f2937;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo-company-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .company-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff; /* Blue */
+}
+
+header .logo img {
+  height: 40px;
+}
+
+header .right-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+header .right-section span {
+  color: #ffffff; /* Gray */
+}
+
+header .right-section a {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+}
+
+header .right-section .login-btn {
+  background-color: #3b82f6; /* Blue */
+}
+
+header .right-section .signup-btn {
+  background-color: #10b981; /* Green */
+}
+
+header .right-section a:hover {
+  opacity: 0.8;
+}
