@@ -41,23 +41,25 @@ exports.resizeProductPhoto = catchAsync(async (req, res, next) => {
     .jpeg({ quality: 90 })
     .toFile(`public/img/products/${req.body.imageCover}`);
 
-  // Images
-  // const images = req.files.images;
-  // req.body.images = []
+  
+  if (!req.files.images) return next();
+  
+  const images = req.files.images;
+  req.body.images = []
 
-  // await Promise.all(
-  //   images.map(async (image, i) => {
-  //     const imageFilename = `product-${req.params.id}-${Date.now()}-${i+1}.jpeg`;
+  await Promise.all(
+    images.map(async (image, i) => {
+      const imageFilename = `product-${req.params.id}-${Date.now()}-${i+1}.jpeg`;
 
-  //     await sharp(image.buffer)
-  //       .resize(500, 500)
-  //       .toFormat('jpeg')
-  //       .jpeg({ quality: 90 })
-  //       .toFile(`public/img/products/${imageFilename}`);
+      await sharp(image.buffer)
+        .resize(500, 500)
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toFile(`public/img/products/${imageFilename}`);
 
-  //     req.body.images.push(imageFilename);
-  //   }),
-  // );
+      req.body.images.push(imageFilename);
+    }),
+  );
 
   next();
 });

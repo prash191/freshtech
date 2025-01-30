@@ -2,9 +2,11 @@
     padding: 20px;
     max-width: 1200px;
     margin: auto;
+    margin-top: 4rem;
   }
   
   .overview-title {
+    color: black;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -12,10 +14,9 @@
   }
   
   .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
+    display: flex;
+    gap: 40px;
+    justify-content: flex-start;
   }
   
   .no-products {

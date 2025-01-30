@@ -1,5 +1,9 @@
 header {
   background-color: #1f2937;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  width: -webkit-fill-available;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 12px 24px;
   display: flex;
@@ -8,47 +12,47 @@ header {
 }
 
 header .logo-company-name {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 header .company-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff; /* Blue */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff; /* Blue */
 }
 
 header .logo img {
-  height: 40px;
+    height: 40px;
 }
 
 header .right-section {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 header .right-section span {
-  color: #ffffff; /* Gray */
+    color: #ffffff; /* Gray */
 }
 
 header .right-section a {
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  color: white;
-  font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
 }
 
 header .right-section .login-btn {
-  background-color: #3b82f6; /* Blue */
+    background-color: #3b82f6; /* Blue */
 }
 
 header .right-section .signup-btn {
-  background-color: #10b981; /* Green */
+    background-color: #10b981; /* Green */
 }
 
 header .right-section a:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }

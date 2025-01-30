@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/css/footer.css";
 import logo from "../assets/icons/logo.png";
+import { EMAIL, PHONE } from "../constant";
 
 const Footer = () => {
   return (
@@ -26,9 +27,9 @@ const Footer = () => {
         {/* Right - Contact Info */}
         <div className="footer-contact">
           <h4>Contact Us</h4>
-          <p>📍 123 Street, City, Country</p>
-          <p>📞 +123 456 7890</p>
-          <p>✉️ support@freshtechro.com</p>
+          <p>📍 Plot No. 89 Ratan Sagar, Iskcon Road, Vijay Path, Mansarover Jaipur</p>
+          <p>{`📞 +91 ${PHONE}`}</p>
+          <p>{`✉️ ${EMAIL}`}</p>
         </div>
       </div>
 

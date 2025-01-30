@@ -9,4 +9,10 @@ export default defineConfig({
       '@': '/src', // Alias for src directory
     },
   },
+  server: {
+    allowedHosts: [
+      'dragon-advanced-heartily.ngrok-free.app',
+      'localhost:3000',  // Add other allowed hosts if needed
+    ],
+  },
 })

@@ -3,6 +3,7 @@ footer {
     color: white;
     padding: 30px 0;
     text-align: center;
+    width: -webkit-fill-available;
   }
   
   .footer-container {
