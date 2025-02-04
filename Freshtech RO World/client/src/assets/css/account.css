@@ -1,0 +1,221 @@
+.account-info-container{
+    margin:auto;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    width: 70%;
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+.account-info-container .user-view__menu {
+    flex: 20rem 0 0;
+    background-image: linear-gradient(to right bottom, #2c5e67, #11535f);
+    padding: 0;
+}
+
+.account-info-container .side-nav {
+    list-style: none;
+    margin: none;
+    padding: 1rem;
+}
+
+
+.account-info-container .side-nav li {
+    margin: .5rem 0;
+    border-left: 0 solid #fff;
+    transition: all 0.3s;
+}
+
+.account-info-container .side-nav--active,
+.account-info-container .side-nav li:hover {
+    border-left: 4px solid #fff !important;
+}
+
+.account-info-container .side-nav--active a {
+    transform: translateX(-3px);
+}
+
+.account-info-container .side-nav a:link,
+.account-info-container .side-nav a:visited {
+    padding: 1rem 1rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.account-info-container .side-nav a:hover,
+.account-info-container .side-nav a:active {
+    transform: translateX(3px);
+}
+
+.account-info-container .side-nav svg {
+    height: 1rem;
+    width: 1rem;
+    fill: #f7f7f7;
+    margin-right: 2rem;
+}
+
+.account-info-container .admin-nav {
+    margin-top: 2rem;
+}
+
+.account-info-container .admin-nav__heading {
+    margin: 0 1rem 1rem 1rem;
+    padding-bottom: 3px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #f2f2f2;
+    border-bottom: 1px solid currentColor;
+}
+
+.btn:link,
+.btn:visited {
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 10rem;
+    text-transform: uppercase;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.4s;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+    outline: none;
+    background-color: #2e864b;
+}
+
+.btn--green {
+    background-color: #55c57a;
+    color: #fff;
+}
+
+.btn--small {
+    padding: .5rem 1rem !important;
+    font-size: 1rem !important;
+}
+
+.user-view {
+    background-color: #fff;
+    max-width: 120rem;
+    margin: 0 auto;
+    min-height: 100vh;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.07);
+    display: flex;
+}
+
+.user-view__menu {
+    flex: 32rem 0 0;
+    background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+    padding: 4rem 0;
+}
+
+.user-view__content {
+    flex: 1;
+    padding: 1rem 0;
+}
+
+.user-view__form-container {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 8rem;
+}
+
+.user-view__form-container .heading-secondary {
+    color: black;
+}
+
+.form__group {
+    margin-bottom: 2.5rem;
+}
+
+.form__label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.form__input {
+    display: block;
+    font-family: inherit;
+    font-size: 1rem;
+    color: inherit;
+    padding: 1rem 1rem;
+    border: none;
+    width: 100%;
+    background-color: #f2f2f2;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form__input:focus {
+    outline: none;
+    border-bottom: 3px solid #55c57a;
+}
+
+.form__input:focus:invalid {
+    border-bottom: 3px solid #ff7730;
+}
+
+.form__photo-upload {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.form__user-photo {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+}
+
+.form__upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.form__upload + label {
+    color: #55c57a;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid #55c57a;
+    padding: 3px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.form__upload + label:hover {
+    background-color: #55c57a;
+    color: #fff;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}

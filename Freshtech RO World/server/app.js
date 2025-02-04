@@ -23,7 +23,13 @@ const app = Express();
 app.set('view engine', 'pug');
 
 // Global middlewares
-app.use(cors({origin: '*'}));
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Replace with frontend URL
+    credentials: true, // ✅ Important for cookies
+  })
+);
+
 
 // Serving static files.
 app.use(Express.static(path.join(__dirname, 'public')));
