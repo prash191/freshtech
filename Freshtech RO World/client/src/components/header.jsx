@@ -14,6 +14,10 @@ const Header = () => {
         <div className="company-name">Freshtech RO World</div>
       </div>
 
+      <div>
+        <input className="search-input" type="search" placeholder="Search Product"/>
+      </div>
+
       {/* Right - Contact & Auth Buttons */}
       <div className="right-section">
         <span>{`📞 +91 ${PHONE}`}</span>

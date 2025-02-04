@@ -56,3 +56,14 @@ header .right-section .signup-btn {
 header .right-section a:hover {
     opacity: 0.8;
 }
+
+header .search-input {
+    width: 15rem;
+    background-color: white;
+    color: black;
+    border: none;
+    outline: none;
+    border-radius: .2em;
+    height: 2rem;
+    padding: 4px;
+}
