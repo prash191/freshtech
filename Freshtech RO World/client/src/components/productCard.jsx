@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/productCard.css";
+import Button from '../components/button';
 import { BACKEND_ENDPOINT } from "../constant";
 
 const ProductCard = ({ product }) => {
@@ -19,6 +20,7 @@ const ProductCard = ({ product }) => {
                 {/* Product Details */}
                 <div className="product-info">
                     <h3 className="product-name">{product.name}</h3>
+                    <p>{product.features.map((feature) => `${feature} `)}</p>
 
                     {/* Price and Discount */}
                     <div className="product-price">
@@ -44,9 +46,7 @@ const ProductCard = ({ product }) => {
                             </span>
                         )}
                     </div>
-
-                    {/* Add to Cart Button */}
-                    <button className="add-to-cart-btn">Add to Cart</button>
+                    <Button className="add-to-cart-btn">Add to Cart</Button>
                 </div>
             </div>
         </Link>
