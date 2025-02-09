@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../assets/css/loginForm.css'
 import Button from '../components/button'
 import { BACKEND_API_ENDPOINT } from "../constant";
-import {login} from '../API/auth';
+import {auth} from '../API/auth';
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ title }) => {
@@ -21,7 +21,7 @@ const LoginForm = ({ title }) => {
     e.preventDefault();
     try {
       const endpoint = `${BACKEND_API_ENDPOINT}/users/login`;
-      const res = await login('POST', endpoint, formData);
+      const res = await auth('POST', endpoint, formData);
       navigate("/");
     } catch(err) {
       console.log(err);

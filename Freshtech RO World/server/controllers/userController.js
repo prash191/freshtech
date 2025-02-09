@@ -18,6 +18,7 @@ const factory = require('./handleFactory');
 const multerStorage = multer.memoryStorage();
 
 const multerFilter = (req, file, callback) => {
+  console.log(file);
   if (file.mimetype.startsWith('image')) {
     callback(null, true);
   } else {
@@ -35,9 +36,10 @@ const upload = multer({
 exports.uploadUserPhoto = upload.single('photo');
 
 exports.resizeUserPhoto = catchAsync( async (req, res, next) => {
+  console.log(req.file);
   if (req.file) {
 
-    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+    req.file.filename = `user-${req.user.id}.jpeg`;
 
     await sharp(req.file.buffer)
       .resize(500, 500)
@@ -45,6 +47,8 @@ exports.resizeUserPhoto = catchAsync( async (req, res, next) => {
       .jpeg({ quality: 90 })
       .toFile(`public/img/users/${req.file.filename}`);
 
+    next();
+  } else {
     next();
   }
 });
