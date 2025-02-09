@@ -1,15 +1,18 @@
 import axios from "axios"
 
-export const login = async function(method, endpoint, data) {
+export const auth = async function(method, endpoint, data, headers=null) {
     try {
         let res = await axios({
             method: method,
             url: endpoint,
             data,
+            headers,
             withCredentials: true
-        });        
-        return res;
+        });
+        return res.data;
     } catch(err) {
-        console.log(err);
+        const newError = {status: 'fail', message: ''}
+        newError.message = err?.response?.data?.message;
+        return newError;
     }
 }

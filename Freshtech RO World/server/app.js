@@ -30,7 +30,6 @@ app.use(
   })
 );
 
-
 // Serving static files.
 app.use(Express.static(path.join(__dirname, 'public')));
 
@@ -47,26 +46,6 @@ app.use('/api', limiter);
 
 // Set security http headers.
 app.use(helmet());
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    `script-src-elem 'self' 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=' https://unpkg.com;`,
-  );
-  const nonce = crypto.randomBytes(16).toString('base64');
-  res.locals.nonce = nonce;
-
-  res.setHeader(
-    'Content-Security-Policy',
-    `script-src-elem 'self' 'nonce-${nonce}'`,
-  );
-
-  res.setHeader(
-    'Content-Security-Policy',
-    "img-src 'self' https://tile.openstreetmap.org https://unpkg.com data:;",
-  );
-
-  next();
-});
 
 // Data sanitization against NoSql query injection.
 app.use(mongoSanitize());
