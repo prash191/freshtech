@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../assets/css/imageCarousel.css";
-import { BACKEND_ENDPOINT } from "../constant";
+import { BACKEND_ENDPOINT } from "../constants/constant";
 
 const ImageCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

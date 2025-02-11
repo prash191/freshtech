@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../assets/css/productDetail.css";
-import { ANUAL_MAINTAINANCE_INFO, BACKEND_ENDPOINT, PHONE } from "../constant";
-import { BACKEND_API_ENDPOINT } from "../constant";
+import { ANUAL_MAINTAINANCE_INFO, BACKEND_ENDPOINT, PHONE } from "../constants/constant";
+import { BACKEND_API_ENDPOINT } from "../constants/constant";
 import ImageCarousel from "../components/imageCarousel";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 

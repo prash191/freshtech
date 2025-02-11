@@ -21,21 +21,18 @@ const createAndSendToken = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000
     ),
-    secure: false,
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
   };
-  console.log(cookieOptions);
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   res.cookie('jwt', token, cookieOptions);
 
   res.status(statusCode).json({
-    status: 'success',
-    token,
-    data: {
-      user: user,
-    },
+    user,
   });
+
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
@@ -63,6 +60,8 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.checkPassword(password, user.password))) {
     return next(new AppError(401, 'Incorrect email address or password.'));
   }
+
+  user.password = undefined;
 
   createAndSendToken(user, 200, res);
 });

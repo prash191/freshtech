@@ -27,9 +27,10 @@ app.use(
   cors({
     origin: "http://localhost:5173", // Replace with frontend URL
     credentials: true, // ✅ Important for cookies
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   })
 );
-
 
 // Serving static files.
 app.use(Express.static(path.join(__dirname, 'public')));
@@ -38,7 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const limiter = rateLimit({
   max: 100,
-  WindowMs: 60 * 60 * 1000,
+  windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP. Please try again later.',
 });
 
@@ -47,26 +48,6 @@ app.use('/api', limiter);
 
 // Set security http headers.
 app.use(helmet());
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    `script-src-elem 'self' 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=' https://unpkg.com;`,
-  );
-  const nonce = crypto.randomBytes(16).toString('base64');
-  res.locals.nonce = nonce;
-
-  res.setHeader(
-    'Content-Security-Policy',
-    `script-src-elem 'self' 'nonce-${nonce}'`,
-  );
-
-  res.setHeader(
-    'Content-Security-Policy',
-    "img-src 'self' https://tile.openstreetmap.org https://unpkg.com data:;",
-  );
-
-  next();
-});
 
 // Data sanitization against NoSql query injection.
 app.use(mongoSanitize());
@@ -75,18 +56,18 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Prevent the parameter polutions.
-app.use(
-  xss({
-    whitelist: [
-      'duration',
-      'ratingsAverage',
-      'ratingsQuantity',
-      'maxGroupSize',
-      'difficulty',
-      'price',
-    ],
-  }),
-);
+// app.use(
+//   xss({
+//     whitelist: [
+//       'duration',
+//       'ratingsAverage',
+//       'ratingsQuantity',
+//       'maxGroupSize',
+//       'difficulty',
+//       'price',
+//     ],
+//   }),
+// );
 
 // Body parser, reading data from body into req.body.
 app.use(Express.json({ limit: '10kb' }));
@@ -101,7 +82,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use((req, res, next) => {
     console.log('hello from middleware');
-    console.log(req.cookies);
+    console.log(req.cookies || {});
     next();
 })
 
