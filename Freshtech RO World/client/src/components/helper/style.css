@@ -1,0 +1,20 @@
+.form__button {
+    display: flex;
+    justify-content: left; /* Center the button */
+    margin-top: 1.5rem;
+  }
+  
+  .btn {
+    background-color: #55c57a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #3ea868;
+  }
+  

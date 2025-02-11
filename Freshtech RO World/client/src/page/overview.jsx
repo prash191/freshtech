@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/productCard";
 import "../assets/css/overview.css";
-import { fetchProducts } from "../API/products";
+import { fetchProducts } from "../actions/products";
 
 const Overview = () => {
   const [products, setProducts] = useState([]);
