@@ -97,6 +97,7 @@ const Account = () => {
         <main className="account-info-container">
             <div className="user-view">
                 <Sidebar />
+                <UserViewContent />
                 <div className="user-view__content">
                     <UserSettingsForm
                         user={user}

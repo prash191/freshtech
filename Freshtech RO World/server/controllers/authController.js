@@ -65,6 +65,8 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError(401, 'Incorrect email address or password.'));
   }
 
+  user = {...user, password: undefined};
+
   createAndSendToken(user, 200, res);
 });
 
