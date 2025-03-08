@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/productCard.css";
-import Button from '../components/button';
-import { BACKEND_ENDPOINT } from "../constant";
+import Button from '../components/helper/button';
+import { BACKEND_ENDPOINT } from "../constants/constant";
 
 const ProductCard = ({ product }) => {
     console.log(BACKEND_ENDPOINT);

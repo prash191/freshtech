@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../assets/css/account.css"; // Assuming a separate CSS file for styles
 import Icon from "../components/icon";
-import { BACKEND_API_ENDPOINT, BACKEND_ENDPOINT } from "../constant";
+import { BACKEND_API_ENDPOINT, BACKEND_ENDPOINT } from "../constants/constant";
 import { AlertContext } from "../components/alertContext";
-import { auth } from "../API/auth";
+import { auth } from "../actions/auth";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Sidebar from "../components/sidebar";

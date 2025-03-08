@@ -1,8 +1,19 @@
 import React, { useState } from "react";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    IconButton,
+    TableSortLabel,
+} from "@mui/material";
+import { Edit, Delete } from "@mui/icons-material";
 import "../assets/css/table.css";
-import Button from "./button";
 
-const Table = ({ columns, data, onEdit, onDelete }) => {
+const DataTable = ({ columns, data, onEdit, onDelete }) => {
     const [sortField, setSortField] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
 
@@ -24,39 +35,58 @@ const Table = ({ columns, data, onEdit, onDelete }) => {
     });
 
     return (
-        <div className="table-container">
-            <table className="custom-table">
-                <thead>
-                    <tr>
+        <TableContainer component={Paper}>
+            <Table className="custom-table">
+                <TableHead>
+                    <TableRow>
                         {columns.map((col) => (
-                            <th key={col.key} onClick={() => handleSort(col.key)}>
-                                {col.label}{" "}
-                                {sortField === col.key ? (sortOrder === "asc" ? "▲" : "▼") : ""}
-                            </th>
+                            <TableCell
+                                key={col.key}
+                                sortDirection={sortField === col.key ? sortOrder : false}
+                                className="custom-table-th"
+                            >
+                                <TableSortLabel
+                                    active={sortField === col.key}
+                                    direction={sortField === col.key ? sortOrder : "asc"}
+                                    onClick={() => handleSort(col.key)}
+                                >
+                                    {col.label}
+                                </TableSortLabel>
+                            </TableCell>
                         ))}
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
+                        <TableCell className="custom-table-th">Actions</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {sortedData.map((row) => (
-                        <tr key={row.id}>
+                        <TableRow key={row.id} className="custom-table-tr">
                             {columns.map((col) => (
-                                <td key={col.key}>{row[col.key]}</td>
+                                <TableCell key={col.key} className="custom-table-td">
+                                    {row[col.key]}
+                                </TableCell>
                             ))}
-                            <td>
-                                <Button className="edit-btn" onClick={() => onEdit(row)}>
-                                    Edit
-                                </Button>
-                                <Button className="delete-btn" onClick={() => onDelete(row.id)}>
-                                    Delete
-                                </Button>
-                            </td>
-                        </tr>
+                            <TableCell className="actions-cell">
+                                <IconButton
+                                    className="edit-btn"
+                                    onClick={() => onEdit(row)}
+                                    aria-label="edit"
+                                >
+                                    <Edit />
+                                </IconButton>
+                                <IconButton
+                                    className="delete-btn"
+                                    onClick={() => onDelete(row.id)}
+                                    aria-label="delete"
+                                >
+                                    <Delete />
+                                </IconButton>
+                            </TableCell>
+                        </TableRow>
                     ))}
-                </tbody>
-            </table>
-        </div>
+                </TableBody>
+            </Table>
+        </TableContainer>
     );
 };
 
-export default Table;
+export default DataTable;

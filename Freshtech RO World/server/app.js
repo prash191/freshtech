@@ -27,6 +27,8 @@ app.use(
   cors({
     origin: "http://localhost:5173", // Replace with frontend URL
     credentials: true, // ✅ Important for cookies
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   })
 );
 
@@ -37,7 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 const limiter = rateLimit({
   max: 100,
-  WindowMs: 60 * 60 * 1000,
+  windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP. Please try again later.',
 });
 
@@ -54,18 +56,18 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Prevent the parameter polutions.
-app.use(
-  xss({
-    whitelist: [
-      'duration',
-      'ratingsAverage',
-      'ratingsQuantity',
-      'maxGroupSize',
-      'difficulty',
-      'price',
-    ],
-  }),
-);
+// app.use(
+//   xss({
+//     whitelist: [
+//       'duration',
+//       'ratingsAverage',
+//       'ratingsQuantity',
+//       'maxGroupSize',
+//       'difficulty',
+//       'price',
+//     ],
+//   }),
+// );
 
 // Body parser, reading data from body into req.body.
 app.use(Express.json({ limit: '10kb' }));
@@ -80,7 +82,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use((req, res, next) => {
     console.log('hello from middleware');
-    console.log(req.cookies);
+    console.log(req.cookies || {});
     next();
 })
 

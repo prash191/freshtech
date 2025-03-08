@@ -1,26 +1,28 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Overview from "./overview";
-import ProductDetails from "./productDetails";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import LoginForm from "./loginForm";
-import Account from "./account";
-import AdminProducts from "./adminProducts";
-import { AlertProvider } from "../components/alertContext";
-import Alert from "../components/alert";
-import AdminLayout from "../components/adminLayout";
+import Overview from "./page/overview";
+import ProductDetails from "./page/productDetails";
+import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer";
+import AuthForm from "./components/auth/authForm";
+import Account from "./page/account";
+import AdminProducts from "./page/adminProducts";
+import { AlertProvider } from "./components/alertContext";
+import Alert from "./components/alert";
+import AdminLayout from "./components/adminLayout";
 
 function App() {
   return (
     <Router>
       <AlertProvider>
         <Alert />
-        <Header />
+        <Navbar />
+        <main>
         <Routes>
           <Route path="/" element={<Overview />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/login" element={<LoginForm title='Login to your account'/>} />
           <Route path="/account" element={<Account />} />
+          <Route path="/login" element={<AuthForm register = {false}/>} />
+          <Route path="/signup" element={<AuthForm register = {true}/>} />
           <Route path="/admin" element={<AdminLayout />} >
             <Route path="products" element={<AdminProducts />} />
             <Route path="users" element={<h2>Manage Users</h2>} />
@@ -28,6 +30,7 @@ function App() {
             <Route path="bookings" element={<h2>Manage Bookings</h2>} />
           </Route>
         </Routes>
+        </main>
         <Footer />
       </AlertProvider>
     </Router>

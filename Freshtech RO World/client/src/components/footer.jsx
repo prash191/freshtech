@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/css/footer.css";
 import logo from "../assets/icons/logo.png";
-import { EMAIL, PHONE } from "../constant";
+import { EMAIL, PHONE } from "../constants/constant";
 
 const Footer = () => {
   return (

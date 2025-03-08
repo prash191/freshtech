@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Table from "../components/tableComponent";
-import { fetchProducts } from "../API/products";
+import DataTable from "../components/tableComponent";
+import { fetchProducts } from "../actions/products";
 
 const AdminProducts = () => {
     const [products, setProducts] = useState([]);
@@ -35,9 +35,7 @@ const AdminProducts = () => {
     ];
 
     return (
-        <div>
-            <Table columns={columns} data={products} onEdit={handleEdit} onDelete={handleDelete} />
-        </div>
+        <DataTable columns={columns} data={products} onEdit={handleEdit} onDelete={handleDelete} />
     );
 };
 
