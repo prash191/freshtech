@@ -1,0 +1,118 @@
+.table-container {
+    overflow-x: auto;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: "Arial", sans-serif;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.custom-table th {
+    background: #6c757d;
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 3px solid #5a6268;
+    transition: background 0.3s ease-in-out;
+}
+
+.custom-table th:first-child {
+    border-top-left-radius: 12px;
+    /* Round top-left */
+}
+
+.custom-table th:last-child {
+    border-top-right-radius: 12px;
+    /* Round top-right */
+}
+
+.custom-table th:hover {
+    background: #5a6268;
+    /* Slightly darker on hover */
+}
+
+.custom-table td {
+    padding: 14px;
+    border-bottom: 1px solid #dee2e6;
+    color: #343a40;
+    /* Dark gray for readability */
+    font-size: 16px;
+    font-weight: 500;
+    background: #f8f9fa;
+    /* Matte light gray */
+    transition: background 0.2s ease-in-out;
+}
+
+.custom-table tr:hover td {
+    background: #e9ecef;
+    /* Slightly darker matte on hover */
+}
+
+.custom-table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+    /* Round bottom-left */
+}
+
+.custom-table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+    /* Round bottom-right */
+}
+
+/* Make the table scrollable for small screens */
+@media screen and (max-width: 768px) {
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+/* Buttons with rounded edges */
+.edit-btn,
+.delete-btn {
+    border: none;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-btn {
+    background: #007bff;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.edit-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.delete-btn:hover {
+    background: #a71d2a;
+    transform: scale(1.05);
+}
+
+td button {
+    margin-right: 8px;
+}
+
+td button:last-child {
+    margin-right: 0;
+}
