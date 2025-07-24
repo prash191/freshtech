@@ -4,11 +4,16 @@ import Icon from "../components/icon";
 import { BACKEND_API_ENDPOINT, BACKEND_ENDPOINT } from "../constants/constant";
 import { AlertContext } from "../components/alertContext";
 import { auth } from "../actions/auth";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Sidebar from "../components/sidebar";
 
 const Account = () => {
     const [user, setUser] = useState({photo: 'default.jpg'});
     const [password, setPassword] = useState({})
+    const [activeSection, setActiveSection] = useState("settings");
     const { showAlert } = useContext(AlertContext);
+    const location = useLocation();
 
     let photo = "default.jpg";
 
@@ -93,6 +98,8 @@ const Account = () => {
         setPassword({...password, [e.target.name]: e.target.value });
     };
 
+    if (location.pathname !== "/account") return null;
+
     return (
         <main className="account-info-container">
             <div className="user-view">
@@ -113,33 +120,6 @@ const Account = () => {
                 </div>
             </div>
         </main>
-    );
-};
-
-const Sidebar = () => {
-    return (
-        <nav className="user-view__menu">
-            <ul className="side-nav">
-                <NavItem
-                    link="#"
-                    text="Settings"
-                    icon="settings"
-                    active={true}
-                />
-                <NavItem link="#" text="My bookings" icon="briefcase" />
-                <NavItem link="#" text="My reviews" icon="star" />
-                <NavItem link="#" text="Billing" icon="credit-card" />
-            </ul>
-            <div className="admin-nav">
-                <h5 className="admin-nav__heading">Admin</h5>
-                <ul className="side-nav">
-                    <NavItem link="#" text="Manage Products" icon="box" />
-                    <NavItem link="#" text="Manage users" icon="users" />
-                    <NavItem link="#" text="Manage reviews" icon="star" />
-                    <NavItem link="#" text="Manage bookings" icon="briefcase" />
-                </ul>
-            </div>
-        </nav>
     );
 };
 
@@ -269,17 +249,6 @@ const PasswordChangeForm = ({onPasswordResetFormSubmit, onHandleChange}) => {
                 </div>
             </form>
         </div>
-    );
-};
-
-const NavItem = ({ link, text, icon, active }) => {
-    return (
-        <li className={`side-nav--${active ? "active" : ""}`}>
-            <a href={link}>
-                <Icon iconId={`icon-${icon}`} />
-                {text}
-            </a>
-        </li>
     );
 };
 
