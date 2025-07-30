@@ -34,7 +34,7 @@ exports.resizeProductPhoto = catchAsync(async (req, res, next) => {
   if (!req.files.imageCover) return next();
   // Cover Image
 
-  req.body.imageCover = `product-${req.params.id}-${Date.now()}-cover.jpeg`;
+  req.body.imageCover = `product-${req.params.id ?? req.user.id}-${Date.now()}-cover.jpeg`;
   await sharp(req.files.imageCover[0].buffer)
     .resize(500, 500)
     .toFormat('jpeg')
@@ -49,7 +49,7 @@ exports.resizeProductPhoto = catchAsync(async (req, res, next) => {
 
   await Promise.all(
     images.map(async (image, i) => {
-      const imageFilename = `product-${req.params.id}-${Date.now()}-${i+1}.jpeg`;
+      const imageFilename = `product-${req.params.id ?? req.user.id}-${Date.now()}-${i+1}.jpeg`;
 
       await sharp(image.buffer)
         .resize(500, 500)

@@ -40,6 +40,8 @@ exports.updateOne = (Model) =>
   });
 
 exports.createOne = (Model) => catchAsync(async (req, res, next) => {
+  console.log("here ", req.body);
+  console.log("req.files ", req.files);
     const newDoc = await Model.create(req.body);
     res.status(201).json({
       status: 'success',

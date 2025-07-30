@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -19,6 +19,7 @@ import { PHONE } from "../../constants/constant";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Toggle drawer
   const toggleDrawer = (open) => (event) => {
@@ -82,7 +83,9 @@ const Navbar = () => {
           </Typography>
 
           {/* Circular Profile Icon with Initial */}
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => {
+            navigate('/account');
+          }}>
             <Avatar sx={{ bgcolor: "#3b82f6", width: 32, height: 32 }}>U</Avatar>
           </IconButton>
 

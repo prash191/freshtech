@@ -24,6 +24,7 @@ const ProductDetails = () => {
                     `${BACKEND_API_ENDPOINT}/products/${id}`
                 ); // Update with actual API URL
                 const res = await response.json();
+                console.log("recieved product => ", res );
                 setProduct(res.data);
             } catch (error) {
                 console.error("Error fetching product details:", error);
@@ -100,7 +101,7 @@ const ProductDetails = () => {
                     <Features keys="Stages" values={product.stage} />
                     <Features
                         keys="Installation"
-                        values={product.installation}
+                        values = { typeof product.installation === 'string' ? product.installation : 'Free' }
                     />
                     <Features keys="Color" values={product.color} />
                     <Features keys="Storage" values={product.storage} />

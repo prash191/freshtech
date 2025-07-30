@@ -111,6 +111,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
   // check if token is present or not
+  console.log("req body => ", req.body);
   let token;
 
   if (
@@ -152,6 +153,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
+    // console.log("req => ", req);
     // roles ['admin', 'lead-guide'], role = 'user'
     console.log(roles);
     console.log(req.user.role);
@@ -253,6 +255,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 
   // check if the posted password is correct
   if (!(await user.checkPassword(req.body.password, user.password))) {
+    console.log("here");
     return next(new AppError(400, "Provided current password doesn't match."));
   }
 

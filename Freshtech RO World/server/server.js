@@ -17,6 +17,8 @@ const DB = process.env.DATABASE.replace(
 
 mongoose.connect(DB, {}).then(() => {
   console.log('connection is successfull.');
+}).catch((err) => {
+  console.log(err);
 });
 
 const app = require('./app');

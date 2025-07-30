@@ -42,7 +42,9 @@ const productSchema = new mongoose.Schema(
         type: Number,
     },
     installation: {
-        enum: ['Free', 'Paid'],
+      type: String,
+      enum: ['Free', 'Paid'],
+      default: 'Free'
     },
     guarantee: {
         type: Number,
