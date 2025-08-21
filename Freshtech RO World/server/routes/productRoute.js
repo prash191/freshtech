@@ -37,6 +37,8 @@ router
   .post(
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
+    productController.uploadUserPhoto,
+    productController.resizeProductPhoto,
     productController.addProduct,
   );
 

@@ -6,6 +6,9 @@ import App from './App'
 import { store } from './reducers/index'
 
 import './assets/css/index.css'
+import './assets/css/table.css'
+import './assets/css/account.css'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -13,7 +13,7 @@ const Sidebar = () => {
     }
 
     return (
-        <nav className="user-view__menu">
+        <nav className="user-view__menu" >
             <ul className="side-nav">
                 <NavItem
                     link="#"

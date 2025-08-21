@@ -93,3 +93,15 @@ td button {
 td button:last-child {
     margin-right: 0;
 }
+
+.admin_prod_thead {
+    background-color: #1f2937;
+}
+
+.admin_prod_thead_head_cell {
+    color: #fff !important;
+}
+
+.admin_prod_thead_head_cell .admin_prod_thead_lable {
+    font-weight: 700;
+}

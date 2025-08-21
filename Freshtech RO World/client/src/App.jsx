@@ -9,6 +9,7 @@ import AdminProducts from "./page/adminProducts";
 import { AlertProvider } from "./components/alertContext";
 import Alert from "./components/alert";
 import AdminLayout from "./components/adminLayout";
+import AddEditProduct from "./page/addEditProduct";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path="/signup" element={<AuthForm register = {true}/>} />
           <Route path="/admin" element={<AdminLayout />} >
             <Route path="products" element={<AdminProducts />} />
+            <Route path="products/add" element={<AddEditProduct mode={"add"} />} />
+            <Route path="products/edit/:id" element={<AddEditProduct mode={"edit"} />} />
             <Route path="users" element={<h2>Manage Users</h2>} />
             <Route path="reviews" element={<h2>Manage Reviews</h2>} />
             <Route path="bookings" element={<h2>Manage Bookings</h2>} />

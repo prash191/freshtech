@@ -38,7 +38,7 @@ const SideDrawer = ({ toggleDrawer }) => {
         </ListItem>
 
         {/* Settings */}
-        <ListItem component={Link} to="/settings" onClick={toggleDrawer(false)} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <ListItem component={Link} to="/account" onClick={toggleDrawer(false)} style={{ textDecoration: 'none', color: 'inherit' }}>
           <ListItemIcon>
             <Settings />
           </ListItemIcon>
