@@ -47,6 +47,31 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
+
+/* Fix header overlay issue */
+.MuiAppBar-root {
+    z-index: 1100 !important;
+    background-color: #1f2937 !important;
+}
+
+/* Ensure proper spacing for content below header */
+body {
+    padding-top: 30px !important; /* Adjust based on your header height */
+}
+
+/* Fix main content layout */
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    padding-top: 64px; /* Match header height */
+    min-height: calc(100vh - 64px);
+}
+
 button:hover {
     border-color: #646cff;
 }

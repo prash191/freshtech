@@ -9,7 +9,9 @@
     "debug": "ndb server.js",
     "debug:prod": "set NODE_ENV=production&&ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
-    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "import-data": "node dev-data/data/import-dev-data.js --import",
+    "delete-data": "node dev-data/data/import-dev-data.js --delete"
   },
   "author": "",
   "license": "ISC",

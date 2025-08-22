@@ -1,0 +1,205 @@
+[
+  {
+    "name": "Premium RO Water Purifier System",
+    "description": "Advanced 7-stage reverse osmosis water purification system with UV sterilization and mineral enhancement for the purest drinking water.",
+    "price": 15999,
+    "category": "RO Systems",
+    "stage": 7,
+    "storage": 8,
+    "power": 45,
+    "installation": "Free",
+    "guarantee": 1,
+    "color": "White",
+    "features": [
+      "7-Stage Filtration",
+      "UV Sterilization",
+      "Mineral Enhancement",
+      "Smart LED Display",
+      "Auto Flush System"
+    ],
+    "specifications": {
+      "Capacity": "75 LPD",
+      "Stages": "7-Stage Filtration",
+      "Tank Capacity": "8 Liters",
+      "Power Consumption": "45W",
+      "Warranty": "1 Year",
+      "Installation": "Free"
+    },
+    "inStock": true,
+    "imageCover": "premium-ro-system.jpg",
+    "images": [
+      "premium-ro-system-1.jpg",
+      "premium-ro-system-2.jpg",
+      "premium-ro-system-3.jpg"
+    ],
+    "ratingsAverage": 4.8,
+    "ratingsQuantity": 12
+  },
+  {
+    "name": "Compact RO Water Purifier",
+    "description": "Space-saving RO system perfect for small kitchens with 5-stage filtration technology and efficient water purification.",
+    "price": 8999,
+    "category": "RO Systems",
+    "stage": 5,
+    "storage": 6,
+    "power": 35,
+    "installation": "Free",
+    "guarantee": 1,
+    "color": "Silver",
+    "features": [
+      "5-Stage Filtration",
+      "Compact Design",
+      "Energy Efficient",
+      "Easy Installation",
+      "Low Maintenance"
+    ],
+    "specifications": {
+      "Capacity": "50 LPD",
+      "Stages": "5-Stage Filtration",
+      "Tank Capacity": "6 Liters",
+      "Power Consumption": "35W",
+      "Warranty": "1 Year",
+      "Installation": "Free"
+    },
+    "inStock": true,
+    "imageCover": "compact-ro-system.jpg",
+    "images": [
+      "compact-ro-system-1.jpg",
+      "compact-ro-system-2.jpg"
+    ],
+    "ratingsAverage": 4.5,
+    "ratingsQuantity": 8
+  },
+  {
+    "name": "UV Water Filter System",
+    "description": "Ultraviolet water filter for additional protection against bacteria and viruses with advanced sterilization technology.",
+    "price": 2999,
+    "category": "Water Filters",
+    "stage": 3,
+    "storage": 2,
+    "power": 11,
+    "installation": "Paid",
+    "guarantee": 0.5,
+    "color": "Blue",
+    "features": [
+      "UV Sterilization",
+      "3-Stage Filtration",
+      "Bacteria Protection",
+      "Virus Elimination",
+      "Easy Maintenance"
+    ],
+    "specifications": {
+      "Flow Rate": "2 LPM",
+      "UV Lamp Life": "9000 Hours",
+      "Power": "11W",
+      "Installation": "Under Sink",
+      "Warranty": "6 Months"
+    },
+    "inStock": false,
+    "imageCover": "uv-filter.jpg",
+    "images": [
+      "uv-filter-1.jpg"
+    ],
+    "ratingsAverage": 4.2,
+    "ratingsQuantity": 5
+  },
+  {
+    "name": "Sediment Filter Cartridge",
+    "description": "High-quality sediment filter cartridge for removing dirt, sand, and rust particles from water supply.",
+    "price": 499,
+    "category": "Accessories",
+    "stage": 1,
+    "storage": 0,
+    "power": 0,
+    "installation": "Free",
+    "guarantee": 0.5,
+    "color": "White",
+    "features": [
+      "5 Micron Filtration",
+      "High Flow Rate",
+      "Long Life Span",
+      "Easy Replacement",
+      "Universal Fit"
+    ],
+    "specifications": {
+      "Filter Size": "10 inch",
+      "Micron Rating": "5 Micron",
+      "Flow Rate": "2.5 GPM",
+      "Life Span": "6 Months",
+      "Compatibility": "Standard RO Systems"
+    },
+    "inStock": true,
+    "imageCover": "sediment-filter.jpg",
+    "images": [
+      "sediment-filter-1.jpg"
+    ],
+    "ratingsAverage": 4.6,
+    "ratingsQuantity": 15
+  },
+  {
+    "name": "Carbon Filter Cartridge",
+    "description": "Activated carbon filter for removing chlorine, taste, and odor from water with enhanced filtration.",
+    "price": 799,
+    "category": "Accessories",
+    "stage": 1,
+    "storage": 0,
+    "power": 0,
+    "installation": "Free",
+    "guarantee": 1,
+    "color": "Black",
+    "features": [
+      "Activated Carbon",
+      "Chlorine Removal",
+      "Taste Enhancement",
+      "Odor Elimination",
+      "12 Month Life"
+    ],
+    "specifications": {
+      "Filter Size": "10 inch",
+      "Carbon Type": "Granular Activated Carbon",
+      "Flow Rate": "2.5 GPM",
+      "Life Span": "12 Months",
+      "Compatibility": "Standard RO Systems"
+    },
+    "inStock": true,
+    "imageCover": "carbon-filter.jpg",
+    "images": [
+      "carbon-filter-1.jpg"
+    ],
+    "ratingsAverage": 4.7,
+    "ratingsQuantity": 22
+  },
+  {
+    "name": "RO Membrane Filter",
+    "description": "High-performance RO membrane for maximum water purification efficiency with 99% rejection rate.",
+    "price": 1499,
+    "category": "Accessories",
+    "stage": 1,
+    "storage": 0,
+    "power": 0,
+    "installation": "Free",
+    "guarantee": 2,
+    "color": "Blue",
+    "features": [
+      "99% Rejection Rate",
+      "High Flow Rate",
+      "Long Life Span",
+      "TFC Technology",
+      "Easy Installation"
+    ],
+    "specifications": {
+      "Membrane Type": "Thin Film Composite",
+      "Rejection Rate": "99%",
+      "Flow Rate": "75 GPD",
+      "Life Span": "2-3 Years",
+      "Compatibility": "Standard RO Systems"
+    },
+    "inStock": true,
+    "imageCover": "ro-membrane.jpg",
+    "images": [
+      "ro-membrane-1.jpg"
+    ],
+    "ratingsAverage": 4.9,
+    "ratingsQuantity": 18
+  }
+]

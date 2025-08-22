@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema(
     ratingsAverage: {
       type: Number,
       default: 4.5,
-      // min and max could be used with numbers and date.
+      // min and max could be only used with numbers and date.
       min: [1, 'A product must have rating greater than 1.'],
       max: [5, 'A product must have rating less than 5.'],
       set: val => Math.round(val*10) / 10, // 4.66666 -> 5, 4.66666 * 10 = 46.66666 -> 47 & 47/10 = 4.7
@@ -77,7 +77,27 @@ const productSchema = new mongoose.Schema(
       required: [true, 'A product must have cover image'],
     },
     images: [String],
+    // New fields to match client expectations
+    category: {
+      type: String,
+      required: [true, 'A product must have a category.'],
+      enum: ['RO Systems', 'Water Filters', 'Accessories', 'Spare Parts'],
+      default: 'RO Systems'
+    },
+    inStock: {
+      type: Boolean,
+      default: true
+    },
+    specifications: {
+      type: Map,
+      of: String,
+      default: {}
+    },
     createdAt: {
+      type: Date,
+      default: Date.now(),
+    },
+    updatedAt: {
       type: Date,
       default: Date.now(),
     },
@@ -103,6 +123,13 @@ productSchema.virtual('reviews', {
 // These are docuemnt middleware and this middleware only runs on create or save, not on insertMany, update, find.
 productSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
+  this.updatedAt = Date.now();
+  next();
+});
+
+// Update updatedAt field on findOneAndUpdate operations
+productSchema.pre('findOneAndUpdate', function (next) {
+  this.set({ updatedAt: Date.now() });
   next();
 });
 

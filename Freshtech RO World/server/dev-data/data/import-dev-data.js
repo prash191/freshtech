@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const User = require('../../models/userModel');
 const Review = require('../../models/reviewModel');
+const Product = require('../../models/productModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -11,12 +12,18 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD,
 );
 
-mongoose.connect(DB, {}).then(() => {
-  console.log('connection is successfull.');
-});
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('DB connection successful!');
+  });
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'),
+// Read JSON files
+const products = JSON.parse(
+  fs.readFileSync(`${__dirname}/products.json`, 'utf-8'),
 );
 const users = JSON.parse(
   fs.readFileSync(`${__dirname}/users.json`, 'utf-8'),
@@ -27,10 +34,10 @@ const reviews = JSON.parse(
 
 const importData = async () => {
   try {
-    await Tour.create(tours);
+    await Product.create(products);
     await User.create(users, {validateBeforeSave: false});
     await Review.create(reviews);
-    console.log('Data is imported successfuly');
+    console.log('Data is imported successfully');
     process.exit();
   } catch (err) {
     console.log(err);
@@ -39,10 +46,10 @@ const importData = async () => {
 
 const deleteData = async () => {
   try {
-    await Tour.deleteMany();
+    await Product.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
-    console.log('Data is deleted successfuly');
+    console.log('Data is deleted successfully');
     process.exit();
   } catch (err) {
     console.log(err);

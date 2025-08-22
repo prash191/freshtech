@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Product = require('./productModel');
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -9,17 +10,17 @@ const reviewSchema = new mongoose.Schema(
       type: Number,
       default: 1,
       // min and max could be used with numbers and date.
-      min: [1, 'A tour must have rating greater than 1.'],
-      max: [5, 'A tour must have rating less than or equal to 5.'],
+      min: [1, 'A product must have rating greater than 1.'],
+      max: [5, 'A product must have rating less than or equal to 5.'],
     },
     createdAt: {
       type: Date,
       default: Date.now(),
     },
-    tour: {
+    product: {
       type: mongoose.Schema.ObjectId,
-      ref: 'Tour',
-      required: [true, 'A review should be for a tour.'],
+      ref: 'Product',
+      required: [true, 'A review should be for a product.'],
     },
     user: {
       type: mongoose.Schema.ObjectId,
@@ -33,23 +34,23 @@ const reviewSchema = new mongoose.Schema(
   },
 );
 
-// Creating compound index for user and tour to prevent duplication of the reviews.
-reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
+// Creating compound index for user and product to prevent duplication of the reviews.
+reviewSchema.index({ product: 1, user: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function (next) {
   this.populate({ path: 'user', select: '-__v' });
   next();
 });
 
-reviewSchema.statics.calcRatingsAverage = async function (tourId) {
+reviewSchema.statics.calcRatingsAverage = async function (productId) {
   // Use aggregate pipeline to calculate average and number or ratings.
   const stats = await this.aggregate([
     {
-      $match: { tour: tourId },
+      $match: { product: productId },
     },
     {
       $group: {
-        _id: '$tour',
+        _id: '$product',
         nRating: { $sum: 1 },
         avgRating: { $avg: '$rating' },
       },
@@ -58,14 +59,14 @@ reviewSchema.statics.calcRatingsAverage = async function (tourId) {
 
   // console.log(stats);
 
-  // Update stats in tour documents.
+  // Update stats in product documents.
   if (stats.length > 0) {
-    await Tour.findByIdAndUpdate(tourId, {
+    await Product.findByIdAndUpdate(productId, {
       ratingsAverage: stats[0].avgRating,
       ratingsQuantity: stats[0].nRating,
     });
   } else {
-    await Tour.findByIdAndUpdate(tourId, {
+    await Product.findByIdAndUpdate(productId, {
       ratingsAverage: 0,
       ratingsQuantity: 4.5,
     });
@@ -76,7 +77,7 @@ reviewSchema.post('save', function () {
   // this points to the current review document.
   // we have added this for the post save because the database gets review after save.
   // post middleware doesn't have access to the next().
-  this.constructor.calcRatingsAverage(this.tour);
+  this.constructor.calcRatingsAverage(this.product);
 });
 
 // We are using pre middleware to execute the query and get the document.
@@ -89,7 +90,7 @@ reviewSchema.pre(/^findOneAnd/, async function (next) {
 });
 
 reviewSchema.post(/^findOneAnd/, async function () {
-  await this.rev.constructor.calcRatingsAverage(this.rev.tour);
+  await this.rev.constructor.calcRatingsAverage(this.rev.product);
 });
 
 const Review = mongoose.model('Review', reviewSchema);

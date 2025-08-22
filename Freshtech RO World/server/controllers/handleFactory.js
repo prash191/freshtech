@@ -18,16 +18,22 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    console.log(
+      '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
+    );
     console.log('The body : ', req.body);
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
 
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    console.log(
+      '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
+    );
     console.log(doc);
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    console.log(
+      '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++',
+    );
 
     if (!doc) {
       return next(new AppError(404, 'No document founds for this id.'));
@@ -39,9 +45,10 @@ exports.updateOne = (Model) =>
     });
   });
 
-exports.createOne = (Model) => catchAsync(async (req, res, next) => {
-  console.log("here ", req.body);
-  console.log("req.files ", req.files);
+exports.createOne = (Model) =>
+  catchAsync(async (req, res, next) => {
+    console.log('here ', req.body);
+    console.log('req.files ', req.files);
     const newDoc = await Model.create(req.body);
     res.status(201).json({
       status: 'success',
@@ -49,23 +56,25 @@ exports.createOne = (Model) => catchAsync(async (req, res, next) => {
     });
   });
 
-exports.getOne = (Model, populateOptions) => catchAsync(async (req, res, next) => {
+exports.getOne = (Model, populateOptions) =>
+  catchAsync(async (req, res, next) => {
     let query = Model.findOne({ _id: req.params.id });
-    if(populateOptions) query = query.populate(populateOptions);
+    if (populateOptions) query = query.populate(populateOptions);
 
     const doc = await query;
-  
+
     if (!doc) {
       return next(new AppError(404, 'No document founds for this id.'));
     }
-  
+
     res.status(200).json({
       status: 'success',
       data: doc,
     });
   });
 
-exports.getAll = (Model) => catchAsync(async (req, res, next) => {
+exports.getAll = (Model) =>
+  catchAsync(async (req, res, next) => {
     // For reviews of a tour (hack)
     let filter = {};
     if (req.params.tourId) filter = { tour: req.params.tourId };
@@ -75,9 +84,10 @@ exports.getAll = (Model) => catchAsync(async (req, res, next) => {
       .sort()
       .limitFields()
       .paginate();
+
     // const doc = await apiFeatures.query.explain();
     const doc = await apiFeatures.query;
-  
+
     res.status(200).json({
       status: 'success',
       result: doc.length,

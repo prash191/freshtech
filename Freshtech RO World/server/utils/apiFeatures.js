@@ -7,7 +7,7 @@ class ApiFeatures {
   filter() {
     // Building the query.
     let queryObj = { ...this.queryString }; // creating the hard copy of the element.
-    const excludeFields = ['sort', 'limit', 'page', 'fields']; // excluding these fields elements to prevent errors on pagination, sorting and limiting the data.
+    const excludeFields = ['sort', 'limit', 'page', 'fields', '_t']; // excluding these fields elements to prevent errors on pagination, sorting and limiting the data.
     excludeFields.forEach((el) => delete queryObj[el]);
 
     let queryStr = JSON.stringify(queryObj);

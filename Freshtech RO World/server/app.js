@@ -12,11 +12,10 @@ const cors = require('cors');
 
 const productRouter = require('./routes/productRoute');
 const userRouter = require('./routes/userRoute');
-const viewRouter = require('./routes/viewRoute');
 const reviewRouter = require('./routes/reviewRoute');
+const dashboardRouter = require('./routes/dashboardRoute');
 const AppError = require('./utils/appError');
 const errorHandler = require('./controllers/errorController');
-const { whitelist } = require('validator');
 
 const app = Express();
 
@@ -27,7 +26,7 @@ app.use(
   cors({
     origin: "http://localhost:5173", // Replace with frontend URL
     credentials: true, // ✅ Important for cookies
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control', 'Pragma', 'Expires'],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   })
 );
@@ -86,16 +85,10 @@ app.use((req, res, next) => {
     next();
 })
 
-// app.get('/api/v1.0/products', getAllProducts);
-// app.post('/api/v1.0/products', addProduct);
-// app.get('/api/v1.0/products/:id', getProduct);
-// app.patch('/api/v1.0/products/:id', updateProduct);
-// app.delete('/api/v1.0/products/:id', deleteProduct);
-
-app.use('/', viewRouter);
 app.use('/api/v1.0/products', productRouter);
 app.use('/api/v1.0/users', userRouter);
 app.use('/api/v1.0/reviews', reviewRouter);
+app.use('/api/v1.0/dashboard', dashboardRouter);
 
 app.all('*', (req, res, next) => {
   // res.status(404).json({
